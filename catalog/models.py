@@ -4,10 +4,28 @@ import uuid
 
 from django.db import models
 
+from .constants import (
+    AUTHOR_NAME_MAX_LENGTH,
+    BOOK_IMPRINT_MAX_LENGTH,
+    BOOK_INSTANCE_STATUS_HELP_TEXT,
+    BOOK_INSTANCE_STATUS_MAX_LENGTH,
+    BOOK_INSTANCE_UNIQUE_ID_HELP_TEXT,
+    BOOK_ISBN_HELP_TEXT,
+    BOOK_ISBN_MAX_LENGTH,
+    BOOK_SUMMARY_HELP_TEXT,
+    BOOK_SUMMARY_MAX_LENGTH,
+    BOOK_TITLE_MAX_LENGTH,
+    GENRE_NAME_HELP_TEXT,
+    GENRE_NAME_MAX_LENGTH,
+    LANGUAGE_NAME_HELP_TEXT,
+    LANGUAGE_NAME_MAX_LENGTH,
+    LoanStatusEnum,
+)
 
 class Genre(models.Model):
     name = models.CharField(
-        max_length=200, help_text='Enter a book genre (e.g. Science Fiction)',
+        max_length=GENRE_NAME_MAX_LENGTH,
+        help_text=GENRE_NAME_HELP_TEXT,
     )
 
     def __str__(self):
@@ -16,7 +34,8 @@ class Genre(models.Model):
 
 class Language(models.Model):
     name = models.CharField(
-        max_length=100, help_text="Enter the book's language (e.g. English, French)",
+        max_length=LANGUAGE_NAME_MAX_LENGTH,
+        help_text=LANGUAGE_NAME_HELP_TEXT,
     )
 
     def __str__(self):
@@ -24,7 +43,7 @@ class Language(models.Model):
 
 
 class Author(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=AUTHOR_NAME_MAX_LENGTH)
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField(null=True, blank=True)
 
@@ -33,18 +52,24 @@ class Author(models.Model):
 
 
 class Book(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=BOOK_TITLE_MAX_LENGTH)
     author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True)
     summary = models.TextField(
-        max_length=1000, help_text='Enter a brief description of the book',
+        max_length=BOOK_SUMMARY_MAX_LENGTH,
+        help_text=BOOK_SUMMARY_HELP_TEXT,
     )
-    imprint = models.CharField(max_length=200)
+    imprint = models.CharField(max_length=BOOK_IMPRINT_MAX_LENGTH)
     ISBN = models.CharField(
-        'ISBN', max_length=13, unique=True, help_text='13 Character ISBN number',
+        'ISBN',
+        max_length=BOOK_ISBN_MAX_LENGTH,
+        unique=True,
+        help_text=BOOK_ISBN_HELP_TEXT,
     )
     genre = models.ManyToManyField(Genre)
     language = models.ForeignKey(
-        Language, on_delete=models.SET_NULL, null=True,
+        Language,
+        on_delete=models.SET_NULL,
+        null=True,
     )
 
     def __str__(self):
@@ -52,25 +77,19 @@ class Book(models.Model):
 
 
 class BookInstance(models.Model):
-    class LoanStatus(models.TextChoices):
-        MAINTENANCE = 'm', ('Maintenance')
-        ON_LOAN = 'o', ('On loan')
-        AVAILABLE = 'a', ('Available')
-        RESERVED = 'r', ('Reserved')
-
     uniqueId = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
-        help_text='Unique ID for this particular book across whole library',
+        help_text=BOOK_INSTANCE_UNIQUE_ID_HELP_TEXT,
     )
     book = models.ForeignKey(Book, on_delete=models.RESTRICT)
     due_back = models.DateField(null=True, blank=True)
     status = models.CharField(
-        max_length=1,
-        choices=LoanStatus.choices,
+        max_length=BOOK_INSTANCE_STATUS_MAX_LENGTH,
+        choices=LoanStatusEnum.choices(),
         blank=True,
-        default=LoanStatus.MAINTENANCE,
-        help_text='Book availability',
+        default=LoanStatusEnum.MAINTENANCE.value,
+        help_text=BOOK_INSTANCE_STATUS_HELP_TEXT,
     )
 
     class Meta:
