@@ -2,18 +2,17 @@ from __future__ import annotations
 
 from django.shortcuts import render
 
-from catalog.models import (
-    Author,
-    Book,
-    BookInstance
-)
+from .constants import LoanStatusEnum
+from catalog.models import Author
+from catalog.models import Book
+from catalog.models import BookInstance
 
 
 def index(request):
     num_book = Book.objects.count()
     num_instances = BookInstance.objects.count()
     num_instances_available = BookInstance.objects.filter(
-        status__exact='a',
+        status__exact=LoanStatusEnum.AVAILABLE.code,
     ).count()
     num_authors = Author.objects.count()
 

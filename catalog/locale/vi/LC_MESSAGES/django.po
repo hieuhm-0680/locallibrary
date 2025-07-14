@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-11 03:32+0000\n"
+"POT-Creation-Date: 2025-07-14 08:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,42 +18,96 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: catalog/constants.py:6
+#: catalog/constants.py:9
 msgid "Enter a book genre (e.g. Science Fiction)"
 msgstr "Nhập thể loại sách (ví dụ: Khoa học viễn tưởng)"
 
-#: catalog/constants.py:10
+#: catalog/constants.py:13
 msgid "Enter the book's language (e.g. English, French)"
 msgstr "Nhập ngôn ngữ của sách (ví dụ: Tiếng Anh, Tiếng Pháp)"
 
-#: catalog/constants.py:18
+#: catalog/constants.py:21
 msgid "Enter a brief description of the book"
 msgstr "Nhập mô tả ngắn gọn về cuốn sách"
 
-#: catalog/constants.py:21
+#: catalog/constants.py:24
 msgid "13 Character ISBN number"
 msgstr "Mã ISBN gồm 13 ký tự"
 
-#: catalog/constants.py:26
+#: catalog/constants.py:29
 msgid "Unique ID for this particular book across whole library"
-msgstr "Mã định danh duy nhất cho cuốn sách này trong toàn bộ thư viện"
+msgstr "Mã ID duy nhất cho cuốn sách này trong toàn bộ thư viện"
 
-#: catalog/constants.py:28
+#: catalog/constants.py:31
 msgid "Book availability"
 msgstr "Tình trạng sẵn có của sách"
 
-#: catalog/constants.py:32
+#: catalog/constants.py:35
 msgid "Maintenance"
 msgstr "Bảo trì"
 
-#: catalog/constants.py:33
+#: catalog/constants.py:36
 msgid "On loan"
 msgstr "Đang được mượn"
 
-#: catalog/constants.py:34
+#: catalog/constants.py:37
 msgid "Available"
 msgstr "Có sẵn"
 
-#: catalog/constants.py:35
+#: catalog/constants.py:38
 msgid "Reserved"
 msgstr "Đã đặt trước"
+
+#: catalog/templates/base_generic.html:5
+msgid "Local Library"
+msgstr "Thư viện"
+
+#: catalog/templates/base_generic.html:16
+msgid "Home"
+msgstr "Trang Chủ"
+
+#: catalog/templates/base_generic.html:17
+msgid "All books"
+msgstr "Tất cả Sách"
+
+#: catalog/templates/base_generic.html:18
+msgid "All authors"
+msgstr "Tất cả Tác giả"
+
+#: catalog/templates/base_generic.html:24
+msgid "Language"
+msgstr "Ngôn ngữ"
+
+#: catalog/templates/index.html:5
+msgid "Local Library Home"
+msgstr "Trang chủ Thư viện"
+
+#: catalog/templates/index.html:6
+msgid "Welcome to LocalLibrary!"
+msgstr "Chào mừng đến với Thư viện!"
+
+#: catalog/templates/index.html:8
+msgid "Dynamic content"
+msgstr "Dynamic content"
+
+#: catalog/templates/index.html:9
+msgid "The library has the following record counts:"
+msgstr "Thư viện có các bản ghi sau:"
+
+#: catalog/templates/index.html:11
+msgid "Books:"
+msgstr "Sách:"
+
+#: catalog/templates/index.html:12
+msgid "Copies:"
+msgstr "Bản sao:"
+
+#: catalog/templates/index.html:13
+#, fuzzy
+#| msgid "Available"
+msgid "Copies available:"
+msgstr "Bản sao có sẵn:"
+
+#: catalog/templates/index.html:14
+msgid "Authors:"
+msgstr "Tác giả:"
