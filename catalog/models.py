@@ -3,6 +3,7 @@ from __future__ import annotations
 import uuid
 
 from django.db import models
+from django.urls import reverse
 
 from .constants import (
     AUTHOR_NAME_MAX_LENGTH,
@@ -21,6 +22,7 @@ from .constants import (
     LANGUAGE_NAME_MAX_LENGTH,
     LoanStatusEnum,
 )
+
 
 class Genre(models.Model):
     name = models.CharField(
@@ -58,7 +60,6 @@ class Book(models.Model):
         max_length=BOOK_SUMMARY_MAX_LENGTH,
         help_text=BOOK_SUMMARY_HELP_TEXT,
     )
-    imprint = models.CharField(max_length=BOOK_IMPRINT_MAX_LENGTH)
     ISBN = models.CharField(
         'ISBN',
         max_length=BOOK_ISBN_MAX_LENGTH,
@@ -75,6 +76,9 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('book-detail', kwargs={'pk': self.pk})
+
 
 class BookInstance(models.Model):
     uniqueId = models.UUIDField(
@@ -84,6 +88,7 @@ class BookInstance(models.Model):
     )
     book = models.ForeignKey(Book, on_delete=models.RESTRICT)
     due_back = models.DateField(null=True, blank=True)
+    imprint = models.CharField(max_length=BOOK_IMPRINT_MAX_LENGTH, blank=True)
     status = models.CharField(
         max_length=BOOK_INSTANCE_STATUS_MAX_LENGTH,
         choices=LoanStatusEnum.choices(),

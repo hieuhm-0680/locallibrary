@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+
+{% block content %}
+  <h1>{% trans "Title" %}: {{ book.title }}</h1>
+  <p><strong>{% trans "Author" %}: <a href="{{ book.author.get_absolute_url }}">{{ book.author.name }}</a></strong></p>
+  <p><strong>{% trans "Summary" %}:</strong> {{ book.summary }}</p>
+  <p><strong>{% trans "ISBN" %}:</strong> {{ book.isbn }}</p>
+  <p><strong>{% trans "Language" %}:</strong> {{ book.language }}</p>
+  <p><strong>{% trans "Genre" %}:</strong> {{ book.genre.all|join:", " }}</p>
+  <div style="margin-left: 20px; margin-top: 20px">
+    <h4>{% trans "Copies" %}</h4>
+    {% if book.bookinstance_set.exists %}
+
+    {% for instance in book.bookinstance_set.all %}
+        <hr>
+        <p class="{% if instance.status == 'a' %}text-success{% elif instance.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
+            {{ instance.get_status_display }}
+        </p>
+        {% if instance.status != 'a' %}
+            <p><strong>{% trans "Due back" %}:</strong> {{ instance.due_back|date:"Y-m-d" }}</p>
+        {% endif %}
+        <p><strong>{% trans "Imprint" %}:</strong> {{ instance.imprint }}</p>
+        <p class="text-muted"><strong>{% trans "ID" %}:</strong>{{ instance.uniqueId }}</p>
+    {% endfor %}
+    {% else %}
+        <p>{% trans "No copies available for this book." %}</p>
+    {% endif %}
+
+  </div>
+
+{% endblock %}

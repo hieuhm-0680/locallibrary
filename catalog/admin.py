@@ -76,7 +76,7 @@ class BookAdmin(admin.ModelAdmin):
         ),
         (
             'Details', {
-                'fields': ('summary', 'ISBN', 'imprint', 'language', 'genre'),
+                'fields': ('summary', 'ISBN', 'language', 'genre'),
             },
         ),
     )
@@ -98,7 +98,7 @@ class BookInstanceAdmin(admin.ModelAdmin):
     fieldsets = (
         (
             None, {
-                'fields': ('book', 'uniqueId'),
+                'fields': ('book', 'uniqueId', 'imprint'),
             },
         ),
         (
