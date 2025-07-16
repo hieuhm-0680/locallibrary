@@ -16,152 +16,144 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: catalog/constants.py:9
 msgid "Enter a book genre (e.g. Science Fiction)"
-msgstr "Nhập thể loại sách (ví dụ: Khoa học viễn tưởng)"
+msgstr ""
 
 #: catalog/constants.py:13
 msgid "Enter the book's language (e.g. English, French)"
-msgstr "Nhập ngôn ngữ của sách (ví dụ: Tiếng Anh, Tiếng Pháp)"
+msgstr ""
 
 #: catalog/constants.py:21
 msgid "Enter a brief description of the book"
-msgstr "Nhập mô tả ngắn gọn về cuốn sách"
+msgstr ""
 
 #: catalog/constants.py:24
 msgid "13 Character ISBN number"
-msgstr "Mã ISBN gồm 13 ký tự"
+msgstr ""
 
 #: catalog/constants.py:29
 msgid "Unique ID for this particular book across whole library"
-msgstr "Mã ID duy nhất cho cuốn sách này trong toàn bộ thư viện"
+msgstr ""
 
 #: catalog/constants.py:31
 msgid "Book availability"
-msgstr "Tình trạng sẵn có của sách"
+msgstr ""
 
 #: catalog/constants.py:35
 msgid "Maintenance"
-msgstr "Bảo trì"
+msgstr ""
 
 #: catalog/constants.py:36
 msgid "On loan"
-msgstr "Đang được mượn"
+msgstr ""
 
 #: catalog/constants.py:37
 msgid "Available"
-msgstr "Có sẵn"
+msgstr ""
 
 #: catalog/constants.py:38
 msgid "Reserved"
-msgstr "Đã đặt trước"
+msgstr ""
 
 #: catalog/templates/base_generic.html:6
 msgid "Local Library"
-msgstr "Thư viện"
+msgstr ""
 
 #: catalog/templates/base_generic.html:17
 msgid "Home"
-msgstr "Trang chủ"
+msgstr ""
 
 #: catalog/templates/base_generic.html:18
 msgid "All books"
-msgstr "Tất cả Sách"
+msgstr ""
 
 #: catalog/templates/base_generic.html:19
 msgid "All authors"
-msgstr "Tất cả Tác giả"
+msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:5
 msgid "Title"
-msgstr "Tiêu đề"
+msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:6
-#, fuzzy
-#| msgid "Authors:"
 msgid "Author"
-msgstr "Tác giả"
+msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:7
 msgid "Summary"
-msgstr "Tóm tắt"
+msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:8
 msgid "ISBN"
-msgstr "ISBN"
+msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:9
 msgid "Language"
-msgstr "Ngôn ngữ"
+msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:10
 msgid "Genre"
-msgstr "Thể loại"
+msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:12
-#, fuzzy
-#| msgid "Copies:"
 msgid "Copies"
-msgstr "Bản sao"
+msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:21
 msgid "Due back"
-msgstr "Hạn trả"
+msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:23
 msgid "Imprint"
-msgstr "Nhà xuất bản"
+msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:24
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:27
 msgid "No copies available for this book."
-msgstr "Không có bản sao nào cho cuốn sách này."
+msgstr ""
 
 #: catalog/templates/catalog/book_list.html:5
-#, fuzzy
-#| msgid "Books:"
 msgid "Book List"
-msgstr "Danh sách Sách"
+msgstr ""
 
 #: catalog/templates/catalog/book_list.html:15
 msgid "There are no books in the library."
-msgstr "Không có sách nào trong thư viện."
+msgstr ""
 
 #: catalog/templates/index.html:5
 msgid "Local Library Home"
-msgstr "Trang chủ Thư viện"
+msgstr ""
 
 #: catalog/templates/index.html:6
 msgid "Welcome to LocalLibrary!"
-msgstr "Chào mừng đến với Thư viện!"
+msgstr ""
 
 #: catalog/templates/index.html:8
 msgid "Dynamic content"
-msgstr "Dynamic content"
+msgstr ""
 
 #: catalog/templates/index.html:9
 msgid "The library has the following record counts:"
-msgstr "Thư viện có các bản ghi sau:"
+msgstr ""
 
 #: catalog/templates/index.html:11
 msgid "Books:"
-msgstr "Sách:"
+msgstr ""
 
 #: catalog/templates/index.html:12
 msgid "Copies:"
-msgstr "Bản sao:"
+msgstr ""
 
 #: catalog/templates/index.html:13
-#, fuzzy
-#| msgid "Available"
 msgid "Copies available:"
-msgstr "Bản sao có sẵn:"
+msgstr ""
 
 #: catalog/templates/index.html:14
 msgid "Authors:"
-msgstr "Tác giả:"
+msgstr ""

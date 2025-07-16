@@ -1,11 +1,14 @@
 from __future__ import annotations
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views import generic
 
-from .constants import LoanStatusEnum
-from catalog.models import Author
-from catalog.models import Book
-from catalog.models import BookInstance
+from catalog.constants import LoanStatusEnum
+from catalog.models import (
+    Author,
+    Book,
+    BookInstance
+)
 
 
 def index(request):
@@ -23,3 +26,28 @@ def index(request):
         'num_authors': num_authors,
     }
     return render(request, 'index.html', context=context)
+
+
+class BookListView(generic.ListView):
+    model = Book
+    context_object_name = 'book_list'
+    template_name = 'catalog/book_list.html'
+    paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+class BookDetailView(generic.DetailView):
+    model = Book
+    context_object_name = 'book'
+    template_name = 'catalog/book_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+    def book_detail_view(request, pk):
+        book = get_object_or_404(Book, pk=pk)
+        return render(request, 'catalog/book_detail.html', {'book': book})

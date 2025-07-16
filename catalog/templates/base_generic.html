@@ -15,7 +15,7 @@
         {% block sidebar %}
           <ul class="sidebar-nav">
             <li><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
-            <li><a href="">{% trans "All books" %}</a></li>
+            <li><a href="{% url 'book-list' %}">{% trans "All books" %}</a></li>
             <li><a href="">{% trans "All authors" %}</a></li>
           </ul>
         {% endblock %}
