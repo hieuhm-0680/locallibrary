@@ -1,0 +1,34 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/catalog.css' %}">
+  <h1>{% trans "Title" %}: {{ book.title }}</h1>
+  <p><strong>{% trans "Author" %}: <a href="">{{ book_author.name }}</a></strong></p>
+  <p><strong>{% trans "Summary" %}:</strong> {{ book.summary }}</p>
+  <p><strong>{% trans "ISBN" %}:</strong> {{ book.isbn }}</p>
+  <p><strong>{% trans "Language" %}:</strong> {{ book_language.name }}</p>
+  <p><strong>{% trans "Genre" %}:</strong> {% for genre in book_genres %}{{ genre.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+  <div class="book-copies">
+    <h4>{% trans "Copies" %}</h4>
+    {% if has_copies %}
+
+    {% for instance in book_instances %}
+        <hr>
+        <p class="{% if instance.status == LoanStatusEnum.AVAILABLE.code %}text-success{% elif instance.status == LoanStatusEnum.MAINTENANCE.code %}text-danger{% else %}text-warning{% endif %}">
+            {{ instance.get_status_display }}
+        </p>
+        {% if instance.status != LoanStatusEnum.AVAILABLE.code %}
+            <p><strong>{% trans "Due back" %}:</strong> {{ instance.due_back|date:"Y-m-d" }}</p>
+        {% endif %}
+        <p><strong>{% trans "Imprint" %}:</strong> {{ instance.imprint }}</p>
+        <p class="text-muted"><strong>{% trans "ID" %}:</strong>{{ instance.uniqueId }}</p>
+    {% endfor %}
+    {% else %}
+        <p>{% trans "No copies available for this book." %}</p>
+    {% endif %}
+
+  </div>
+
+{% endblock %}
