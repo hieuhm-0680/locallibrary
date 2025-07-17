@@ -1,14 +1,14 @@
 from __future__ import annotations
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 from django.views import generic
 
+from catalog.constants import BOOKS_PER_PAGE
 from catalog.constants import LoanStatusEnum
-from catalog.models import (
-    Author,
-    Book,
-    BookInstance
-)
+from catalog.models import Author
+from catalog.models import Book
+from catalog.models import BookInstance
 
 
 def index(request):
@@ -32,7 +32,7 @@ class BookListView(generic.ListView):
     model = Book
     context_object_name = 'book_list'
     template_name = 'catalog/book_list.html'
-    paginate_by = 10
+    paginate_by = BOOKS_PER_PAGE
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -46,6 +46,12 @@ class BookDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        book_instances = BookInstance.objects.filter(
+            book=self.object,
+        ).order_by('status', 'due_back')
+        context['book_instances'] = book_instances
+        context['has_copies'] = book_instances.exists()
+        context['LoanStatusEnum'] = LoanStatusEnum
         return context
 
     def book_detail_view(request, pk):

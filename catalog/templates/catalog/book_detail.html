@@ -1,23 +1,25 @@
 {% extends "base_generic.html" %}
 {% load i18n %}
+{% load static %}
 
 {% block content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/catalog.css' %}">
   <h1>{% trans "Title" %}: {{ book.title }}</h1>
   <p><strong>{% trans "Author" %}: <a href="{{ book.author.get_absolute_url }}">{{ book.author.name }}</a></strong></p>
   <p><strong>{% trans "Summary" %}:</strong> {{ book.summary }}</p>
   <p><strong>{% trans "ISBN" %}:</strong> {{ book.isbn }}</p>
   <p><strong>{% trans "Language" %}:</strong> {{ book.language }}</p>
   <p><strong>{% trans "Genre" %}:</strong> {{ book.genre.all|join:", " }}</p>
-  <div style="margin-left: 20px; margin-top: 20px">
+  <div class="book-copies">
     <h4>{% trans "Copies" %}</h4>
-    {% if book.bookinstance_set.exists %}
+    {% if has_copies %}
 
-    {% for instance in book.bookinstance_set.all %}
+    {% for instance in book_instances %}
         <hr>
-        <p class="{% if instance.status == 'a' %}text-success{% elif instance.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
+        <p class="{% if instance.status == LoanStatusEnum.AVAILABLE.code %}text-success{% elif instance.status == LoanStatusEnum.MAINTENANCE.code %}text-danger{% else %}text-warning{% endif %}">
             {{ instance.get_status_display }}
         </p>
-        {% if instance.status != 'a' %}
+        {% if instance.status != LoanStatusEnum.AVAILABLE.code %}
             <p><strong>{% trans "Due back" %}:</strong> {{ instance.due_back|date:"Y-m-d" }}</p>
         {% endif %}
         <p><strong>{% trans "Imprint" %}:</strong> {{ instance.imprint }}</p>
