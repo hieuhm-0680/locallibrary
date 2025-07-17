@@ -5,11 +5,11 @@
 {% block content %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/catalog.css' %}">
   <h1>{% trans "Title" %}: {{ book.title }}</h1>
-  <p><strong>{% trans "Author" %}: <a href="{{ book.author.get_absolute_url }}">{{ book.author.name }}</a></strong></p>
+  <p><strong>{% trans "Author" %}: <a href="">{{ book_author.name }}</a></strong></p>
   <p><strong>{% trans "Summary" %}:</strong> {{ book.summary }}</p>
   <p><strong>{% trans "ISBN" %}:</strong> {{ book.isbn }}</p>
-  <p><strong>{% trans "Language" %}:</strong> {{ book.language }}</p>
-  <p><strong>{% trans "Genre" %}:</strong> {{ book.genre.all|join:", " }}</p>
+  <p><strong>{% trans "Language" %}:</strong> {{ book_language.name }}</p>
+  <p><strong>{% trans "Genre" %}:</strong> {% for genre in book_genres %}{{ genre.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
   <div class="book-copies">
     <h4>{% trans "Copies" %}</h4>
     {% if has_copies %}

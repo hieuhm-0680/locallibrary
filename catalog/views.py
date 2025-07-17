@@ -38,11 +38,20 @@ class BookListView(generic.ListView):
         context = super().get_context_data(**kwargs)
         return context
 
+    def get_queryset(self):
+        return Book.objects.select_related('author').all()
+
 
 class BookDetailView(generic.DetailView):
     model = Book
     context_object_name = 'book'
     template_name = 'catalog/book_detail.html'
+
+    def get_queryset(self):
+        return Book.objects.select_related(
+            'author',
+            'language',
+        ).prefetch_related('genre')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -52,6 +61,9 @@ class BookDetailView(generic.DetailView):
         context['book_instances'] = book_instances
         context['has_copies'] = book_instances.exists()
         context['LoanStatusEnum'] = LoanStatusEnum
+        context['book_genres'] = list(self.object.genre.all())
+        context['book_author'] = self.object.author
+        context['book_language'] = self.object.language
         return context
 
     def book_detail_view(request, pk):
