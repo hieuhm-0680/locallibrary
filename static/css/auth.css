@@ -1,0 +1,19 @@
+/* Authentication related styles */
+
+.logout-form {
+    display: inline;
+}
+
+.logout-button {
+    padding: 0;
+    border: none;
+    background: none;
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: inherit;
+}
+
+.logout-button:hover {
+    color: #0056b3;
+}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-16 04:27+0000\n"
+"POT-Creation-Date: 2025-07-18 09:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,19 +42,19 @@ msgstr "Mã ID duy nhất cho cuốn sách này trong toàn bộ thư viện"
 msgid "Book availability"
 msgstr "Tình trạng sẵn có của sách"
 
-#: catalog/constants.py:35
+#: catalog/constants.py:39
 msgid "Maintenance"
 msgstr "Bảo trì"
 
-#: catalog/constants.py:36
+#: catalog/constants.py:40
 msgid "On loan"
 msgstr "Đang được mượn"
 
-#: catalog/constants.py:37
+#: catalog/constants.py:41
 msgid "Available"
 msgstr "Có sẵn"
 
-#: catalog/constants.py:38
+#: catalog/constants.py:42
 msgid "Reserved"
 msgstr "Đã đặt trước"
 
@@ -62,63 +62,75 @@ msgstr "Đã đặt trước"
 msgid "Local Library"
 msgstr "Thư viện"
 
-#: catalog/templates/base_generic.html:17
+#: catalog/templates/base_generic.html:20
 msgid "Home"
 msgstr "Trang chủ"
 
-#: catalog/templates/base_generic.html:18
+#: catalog/templates/base_generic.html:21
 msgid "All books"
 msgstr "Tất cả Sách"
 
-#: catalog/templates/base_generic.html:19
+#: catalog/templates/base_generic.html:22
 msgid "All authors"
 msgstr "Tất cả Tác giả"
 
-#: catalog/templates/catalog/book_detail.html:5
+#: catalog/templates/base_generic.html:26
+msgid "My borrowed"
+msgstr "Sách tôi mượn"
+
+#: catalog/templates/base_generic.html:32
+msgid "Logout"
+msgstr "Đăng xuất"
+
+#: catalog/templates/base_generic.html:37 templates/registration/login.html:32
+msgid "Login"
+msgstr "Đăng nhập"
+
+#: catalog/templates/catalog/book_detail.html:7
 msgid "Title"
 msgstr "Tiêu đề"
 
-#: catalog/templates/catalog/book_detail.html:6
+#: catalog/templates/catalog/book_detail.html:8
 #, fuzzy
 #| msgid "Authors:"
 msgid "Author"
 msgstr "Tác giả"
 
-#: catalog/templates/catalog/book_detail.html:7
+#: catalog/templates/catalog/book_detail.html:9
 msgid "Summary"
 msgstr "Tóm tắt"
 
-#: catalog/templates/catalog/book_detail.html:8
+#: catalog/templates/catalog/book_detail.html:10
 msgid "ISBN"
 msgstr "ISBN"
 
-#: catalog/templates/catalog/book_detail.html:9
+#: catalog/templates/catalog/book_detail.html:11
 msgid "Language"
 msgstr "Ngôn ngữ"
 
-#: catalog/templates/catalog/book_detail.html:10
+#: catalog/templates/catalog/book_detail.html:12
 msgid "Genre"
 msgstr "Thể loại"
 
-#: catalog/templates/catalog/book_detail.html:12
+#: catalog/templates/catalog/book_detail.html:14
 #, fuzzy
 #| msgid "Copies:"
 msgid "Copies"
 msgstr "Bản sao"
 
-#: catalog/templates/catalog/book_detail.html:21
+#: catalog/templates/catalog/book_detail.html:23
 msgid "Due back"
 msgstr "Hạn trả"
 
-#: catalog/templates/catalog/book_detail.html:23
+#: catalog/templates/catalog/book_detail.html:25
 msgid "Imprint"
 msgstr "Nhà xuất bản"
 
-#: catalog/templates/catalog/book_detail.html:24
+#: catalog/templates/catalog/book_detail.html:26
 msgid "ID"
 msgstr "ID"
 
-#: catalog/templates/catalog/book_detail.html:27
+#: catalog/templates/catalog/book_detail.html:29
 msgid "No copies available for this book."
 msgstr "Không có bản sao nào cho cuốn sách này."
 
@@ -132,6 +144,44 @@ msgstr "Danh sách Sách"
 msgid "There are no books in the library."
 msgstr "Không có sách nào trong thư viện."
 
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:5
+msgid "Borrowed books"
+msgstr "Sách đã mượn"
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:13
+msgid "OVERDUE"
+msgstr "QUÁ HẠN"
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:20
+#, fuzzy
+#| msgid "There are no books in the library."
+msgid "There are no books borrowed."
+msgstr "Không có sách nào được mượn."
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:27
+msgid "first"
+msgstr "đầu"
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:28
+msgid "previous"
+msgstr "trước"
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:32
+msgid "Page"
+msgstr "Trang"
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:32
+msgid "of"
+msgstr "của"
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:36
+msgid "next"
+msgstr "sau"
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:37
+msgid "last"
+msgstr "cuối"
+
 #: catalog/templates/index.html:5
 msgid "Local Library Home"
 msgstr "Trang chủ Thư viện"
@@ -142,7 +192,7 @@ msgstr "Chào mừng đến với Thư viện!"
 
 #: catalog/templates/index.html:8
 msgid "Dynamic content"
-msgstr "Dynamic content"
+msgstr "Nội dung động"
 
 #: catalog/templates/index.html:9
 msgid "The library has the following record counts:"
@@ -173,3 +223,71 @@ msgstr "Số lần truy cập:"
 #: catalog/templates/index.html:16
 msgid "times"
 msgstr "lần"
+
+#: templates/registration/logged_out.html:5
+msgid "Logged out."
+msgstr "Đã đăng xuất."
+
+#: templates/registration/logged_out.html:6
+msgid "Log in again"
+msgstr "Đăng nhập lại"
+
+#: templates/registration/login.html:7
+msgid "Your username or password didn't match. Please try again."
+msgstr "Tên người dùng hoặc mật khẩu không khớp. Vui lòng thử lại."
+
+#: templates/registration/login.html:13
+msgid ""
+"Your account doesn't have access to this page. To proceed, please log in "
+"with an account that has access."
+msgstr ""
+"Tài khoản của bạn không có quyền truy cập trang này. Để tiếp tục, vui lòng "
+"đăng nhập bằng tài khoản có quyền truy cập."
+
+#: templates/registration/login.html:16
+msgid "Please log in to access this page."
+msgstr "Vui lòng đăng nhập để truy cập trang này."
+
+#: templates/registration/login.html:36
+msgid "Lost password?"
+msgstr "Quên mật khẩu?"
+
+#: templates/registration/password_reset_confirm.html:6
+msgid "Please enter and confirm your new password."
+msgstr "Vui lòng nhập và xác nhận mật khẩu mới của bạn."
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "New password:"
+msgstr "Mật khẩu mới:"
+
+#: templates/registration/password_reset_confirm.html:18
+msgid "Confirm password:"
+msgstr "Xác nhận mật khẩu:"
+
+#: templates/registration/password_reset_confirm.html:24
+msgid "Change my password"
+msgstr "Thay đổi mật khẩu của tôi"
+
+#: templates/registration/password_reset_confirm.html:29
+msgid "Password reset failed"
+msgstr "Đặt lại mật khẩu thất bại"
+
+#: templates/registration/password_reset_confirm.html:31
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Liên kết đặt lại mật khẩu không hợp lệ, có thể vì nó đã được sử dụng. "
+"Vui lòng yêu cầu đặt lại mật khẩu mới."
+
+#: templates/registration/password_reset_done.html:5
+msgid ""
+"We've emailed you instructions for setting your password. If they haven't "
+"arrived in a few minutes, check your spam folder."
+msgstr ""
+"Chúng tôi đã gửi email hướng dẫn đặt mật khẩu cho bạn. Nếu không nhận được "
+"trong vài phút, hãy kiểm tra thư mục spam."
+
+#: templates/registration/password_reset_form.html:11
+msgid "Reset password"
+msgstr "Đặt lại mật khẩu"

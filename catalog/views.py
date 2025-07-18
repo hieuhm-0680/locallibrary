@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.views import generic
 
 from catalog.constants import BOOKS_PER_PAGE
+from catalog.constants import BORROWED_BOOKS_PER_PAGE
 from catalog.constants import LoanStatusEnum
 from catalog.models import Author
 from catalog.models import Book
@@ -73,3 +75,16 @@ class BookDetailView(generic.DetailView):
     def book_detail_view(request, pk):
         book = get_object_or_404(Book, pk=pk)
         return render(request, 'catalog/book_detail.html', {'book': book})
+
+
+class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
+    model = BookInstance
+    template_name = 'catalog/bookinstance_list_borrowed_user.html'
+    context_object_name = 'bookinstance_list'
+    paginate_by = BORROWED_BOOKS_PER_PAGE
+
+    def get_queryset(self):
+        return BookInstance.objects.filter(
+            borrower=self.request.user,
+            status__exact=LoanStatusEnum.ON_LOAN.code,
+        ).order_by('due_back')

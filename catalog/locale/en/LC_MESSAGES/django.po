@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-16 04:27+0000\n"
+"POT-Creation-Date: 2025-07-18 09:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,19 +42,19 @@ msgstr ""
 msgid "Book availability"
 msgstr ""
 
-#: catalog/constants.py:35
+#: catalog/constants.py:39
 msgid "Maintenance"
 msgstr ""
 
-#: catalog/constants.py:36
+#: catalog/constants.py:40
 msgid "On loan"
 msgstr ""
 
-#: catalog/constants.py:37
+#: catalog/constants.py:41
 msgid "Available"
 msgstr ""
 
-#: catalog/constants.py:38
+#: catalog/constants.py:42
 msgid "Reserved"
 msgstr ""
 
@@ -62,59 +62,71 @@ msgstr ""
 msgid "Local Library"
 msgstr ""
 
-#: catalog/templates/base_generic.html:17
+#: catalog/templates/base_generic.html:20
 msgid "Home"
 msgstr ""
 
-#: catalog/templates/base_generic.html:18
+#: catalog/templates/base_generic.html:21
 msgid "All books"
 msgstr ""
 
-#: catalog/templates/base_generic.html:19
+#: catalog/templates/base_generic.html:22
 msgid "All authors"
 msgstr ""
 
-#: catalog/templates/catalog/book_detail.html:5
-msgid "Title"
+#: catalog/templates/base_generic.html:26
+msgid "My borrowed"
 msgstr ""
 
-#: catalog/templates/catalog/book_detail.html:6
-msgid "Author"
+#: catalog/templates/base_generic.html:32
+msgid "Logout"
+msgstr ""
+
+#: catalog/templates/base_generic.html:37 templates/registration/login.html:32
+msgid "Login"
 msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:7
-msgid "Summary"
+msgid "Title"
 msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:8
-msgid "ISBN"
+msgid "Author"
 msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:9
-msgid "Language"
+msgid "Summary"
 msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:10
-msgid "Genre"
+msgid "ISBN"
+msgstr ""
+
+#: catalog/templates/catalog/book_detail.html:11
+msgid "Language"
 msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:12
+msgid "Genre"
+msgstr ""
+
+#: catalog/templates/catalog/book_detail.html:14
 msgid "Copies"
 msgstr ""
 
-#: catalog/templates/catalog/book_detail.html:21
+#: catalog/templates/catalog/book_detail.html:23
 msgid "Due back"
 msgstr ""
 
-#: catalog/templates/catalog/book_detail.html:23
+#: catalog/templates/catalog/book_detail.html:25
 msgid "Imprint"
 msgstr ""
 
-#: catalog/templates/catalog/book_detail.html:24
+#: catalog/templates/catalog/book_detail.html:26
 msgid "ID"
 msgstr ""
 
-#: catalog/templates/catalog/book_detail.html:27
+#: catalog/templates/catalog/book_detail.html:29
 msgid "No copies available for this book."
 msgstr ""
 
@@ -124,6 +136,42 @@ msgstr ""
 
 #: catalog/templates/catalog/book_list.html:15
 msgid "There are no books in the library."
+msgstr ""
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:5
+msgid "Borrowed books"
+msgstr ""
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:13
+msgid "OVERDUE"
+msgstr ""
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:20
+msgid "There are no books borrowed."
+msgstr ""
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:27
+msgid "first"
+msgstr ""
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:28
+msgid "previous"
+msgstr ""
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:32
+msgid "Page"
+msgstr ""
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:32
+msgid "of"
+msgstr ""
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:36
+msgid "next"
+msgstr ""
+
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:37
+msgid "last"
 msgstr ""
 
 #: catalog/templates/index.html:5
@@ -164,4 +212,66 @@ msgstr ""
 
 #: catalog/templates/index.html:16
 msgid "times"
+msgstr ""
+
+#: templates/registration/logged_out.html:5
+msgid "Logged out."
+msgstr ""
+
+#: templates/registration/logged_out.html:6
+msgid "Log in again"
+msgstr ""
+
+#: templates/registration/login.html:7
+msgid "Your username or password didn't match. Please try again."
+msgstr ""
+
+#: templates/registration/login.html:13
+msgid ""
+"Your account doesn't have access to this page. To proceed, please log in "
+"with an account that has access."
+msgstr ""
+
+#: templates/registration/login.html:16
+msgid "Please log in to access this page."
+msgstr ""
+
+#: templates/registration/login.html:36
+msgid "Lost password?"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:6
+msgid "Please enter and confirm your new password."
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:12
+msgid "New password:"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:18
+msgid "Confirm password:"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:24
+msgid "Change my password"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:29
+msgid "Password reset failed"
+msgstr ""
+
+#: templates/registration/password_reset_confirm.html:31
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+
+#: templates/registration/password_reset_done.html:5
+msgid ""
+"We've emailed you instructions for setting your password. If they haven't "
+"arrived in a few minutes, check your spam folder."
+msgstr ""
+
+#: templates/registration/password_reset_form.html:11
+msgid "Reset password"
 msgstr ""

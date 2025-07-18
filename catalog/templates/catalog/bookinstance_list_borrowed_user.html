@@ -1,0 +1,42 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+
+{% block content %}
+  <h1>{% trans "Borrowed books" %}</h1>
+
+  {% if bookinstance_list %}
+  <ul>
+    {% for bookinst in bookinstance_list %}
+      <li class="{% if bookinst.is_overdue %}text-danger{% endif %}">
+        <a href="{{ bookinst.book.get_absolute_url }}">{{ bookinst.book.title }}</a> ({{ bookinst.due_back }})
+        {% if bookinst.is_overdue %}
+          <strong>- {% trans "OVERDUE" %}</strong>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% else %}
+    <p>{% trans "There are no books borrowed." %}</p>
+  {% endif %}
+
+  {% if is_paginated %}
+    <div class="pagination">
+      <span class="page-links">
+        {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; {% trans "first" %}</a>
+          <a href="?page={{ page_obj.previous_page_number }}">{% trans "previous" %}</a>
+        {% endif %}
+
+        <span class="current">
+          {% trans "Page" %} {{ page_obj.number }} {% trans "of" %} {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">{% trans "next" %}</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">{% trans "last" %} &raquo;</a>
+        {% endif %}
+      </span>
+    </div>
+  {% endif %}
+{% endblock %}
