@@ -1,27 +1,27 @@
 from __future__ import annotations
 
 import uuid
+from datetime import date
 
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 
-from .constants import (
-    AUTHOR_NAME_MAX_LENGTH,
-    BOOK_IMPRINT_MAX_LENGTH,
-    BOOK_INSTANCE_STATUS_HELP_TEXT,
-    BOOK_INSTANCE_STATUS_MAX_LENGTH,
-    BOOK_INSTANCE_UNIQUE_ID_HELP_TEXT,
-    BOOK_ISBN_HELP_TEXT,
-    BOOK_ISBN_MAX_LENGTH,
-    BOOK_SUMMARY_HELP_TEXT,
-    BOOK_SUMMARY_MAX_LENGTH,
-    BOOK_TITLE_MAX_LENGTH,
-    GENRE_NAME_HELP_TEXT,
-    GENRE_NAME_MAX_LENGTH,
-    LANGUAGE_NAME_HELP_TEXT,
-    LANGUAGE_NAME_MAX_LENGTH,
-    LoanStatusEnum,
-)
+from .constants import AUTHOR_NAME_MAX_LENGTH
+from .constants import BOOK_IMPRINT_MAX_LENGTH
+from .constants import BOOK_INSTANCE_STATUS_HELP_TEXT
+from .constants import BOOK_INSTANCE_STATUS_MAX_LENGTH
+from .constants import BOOK_INSTANCE_UNIQUE_ID_HELP_TEXT
+from .constants import BOOK_ISBN_HELP_TEXT
+from .constants import BOOK_ISBN_MAX_LENGTH
+from .constants import BOOK_SUMMARY_HELP_TEXT
+from .constants import BOOK_SUMMARY_MAX_LENGTH
+from .constants import BOOK_TITLE_MAX_LENGTH
+from .constants import GENRE_NAME_HELP_TEXT
+from .constants import GENRE_NAME_MAX_LENGTH
+from .constants import LANGUAGE_NAME_HELP_TEXT
+from .constants import LANGUAGE_NAME_MAX_LENGTH
+from .constants import LoanStatusEnum
 
 
 class Genre(models.Model):
@@ -97,8 +97,24 @@ class BookInstance(models.Model):
         help_text=BOOK_INSTANCE_STATUS_HELP_TEXT,
     )
 
+    borrower = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
+
     class Meta:
         ordering = ['due_back']
+        permissions = (
+            ('can_mark_returned', 'Set book as returned'),
+        )
 
     def __str__(self):
         return f"{self.uniqueId} ({self.book.title})"
+
+    @property
+    def is_overdue(self):
+        if self.due_back and self.status == LoanStatusEnum.ON_LOAN.value:
+            return date.today() > self.due_back
+        return False
