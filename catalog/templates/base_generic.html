@@ -22,17 +22,17 @@
               <li><a href="">{% trans "All authors" %}</a></li>
             </ul>
             {% if user.is_authenticated %}
-            <li>User: {{ user.get_username }}</li>
-            <li><a href="{% url 'my-borrowed' %}">{% trans "My borrowed" %}</a></li>
-            <li>
-              <form method="post" action="{% url 'logout' %}" class="logout-form">
-                {% csrf_token %}
-                <input type="hidden" name="next" value="{{ request.path }}">
-                <button type="submit" class="logout-button">
-                  {% trans "Logout" %}
-                </button>
-              </form>
-            </li>
+              <li>User: {{ user.get_username }}</li>
+              <li><a href="{% url 'my-borrowed' %}">{% trans "My borrowed" %}</a></li>
+              <li>
+                <form method="post" action="{% url 'logout' %}" class="logout-form">
+                  {% csrf_token %}
+                  <input type="hidden" name="next" value="{{ request.path }}">
+                  <button type="submit" class="logout-button">
+                    {% trans "Logout" %}
+                  </button>
+                </form>
+              </li>
             {% else %}
             <li><a href="{% url 'login'%}?next={{request.path}}">{% trans "Login" %}</a></li>
             {% endif %}
