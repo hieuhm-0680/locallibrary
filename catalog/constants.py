@@ -32,6 +32,7 @@ BOOK_INSTANCE_STATUS_HELP_TEXT = _('Book availability')
 
 # Pagination constants
 BOOKS_PER_PAGE = 10
+BORROWED_BOOKS_PER_PAGE = 10
 
 
 class LoanStatusEnum(Enum):
