@@ -1,0 +1,41 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+{% block content %}
+  <h1>{% trans "Author List" %}</h1>
+
+  {% if author_list %}
+    <ul>
+      {% for author in author_list %}
+        <li>
+          <a href="{{ author.get_absolute_url }}">{{ author.name }}</a>
+          {% if author.date_of_birth %}
+            ({{ author.date_of_birth|date:"Y" }}
+            {% if author.date_of_death %} - {{ author.date_of_death|date:"Y" }}{% endif %})
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>{% trans "There are no authors in the library." %}</p>
+  {% endif %}
+
+  {% if is_paginated %}
+    <div class="pagination">
+      <span class="page-links">
+        {% if page_obj.has_previous %}
+          <a href="?page=1">{% trans "first" %}</a>
+          <a href="?page={{ page_obj.previous_page_number }}">{% trans "previous" %}</a>
+        {% endif %}
+
+        <span class="current">
+          {% blocktrans with page_num=page_obj.number total_pages=page_obj.paginator.num_pages %}Page {{ page_num }} of {{ total_pages }}{% endblocktrans %}
+        </span>
+
+        {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">{% trans "next" %}</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">{% trans "last" %}</a>
+        {% endif %}
+      </span>
+    </div>
+  {% endif %}
+{% endblock %}

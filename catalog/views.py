@@ -100,6 +100,27 @@ class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
         ).order_by('due_back')
 
 
+class AuthorListView(generic.ListView):
+    model = Author
+    context_object_name = 'author_list'
+    template_name = 'catalog/author_list.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return Author.objects.all().order_by('name')
+
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
+    context_object_name = 'author'
+    template_name = 'catalog/author_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['author_books'] = Book.objects.filter(author=self.object)
+        return context
+
+
 @login_required
 @permission_required('catalog.can_mark_returned', raise_exception=True)
 def renew_book_librarian(request, pk):

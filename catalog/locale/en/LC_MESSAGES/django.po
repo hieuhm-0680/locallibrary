@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-23 04:42+0000\n"
+"POT-Creation-Date: 2025-07-23 09:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,120 +50,104 @@ msgstr ""
 msgid "Enter a date between now and 4 weeks (default 3 weeks)."
 msgstr ""
 
-#: catalog/constants.py:41
+#: catalog/constants.py:42
 msgid "Invalid date - renewal in past"
 msgstr ""
 
-#: catalog/constants.py:42
+#: catalog/constants.py:43
 msgid "Invalid date - renewal more than 4 weeks ahead"
 msgstr ""
 
-#: catalog/constants.py:45 catalog/templates/catalog/author_form.html:10
+#: catalog/constants.py:46 catalog/templates/catalog/author_form.html:10
 msgid "Submit"
 msgstr ""
 
-#: catalog/constants.py:46 catalog/constants.py:55
+#: catalog/constants.py:47 catalog/constants.py:59
 #: catalog/templates/catalog/author_confirm_delete.html:4
 #: catalog/templates/catalog/author_confirm_delete.html:8
 #: catalog/templates/catalog/author_detail.html:26
 msgid "Delete Author"
 msgstr ""
 
-#: catalog/constants.py:47
+#: catalog/constants.py:48
 #: catalog/templates/catalog/author_confirm_delete.html:11
 msgid "Are you sure you want to delete this author?"
 msgstr ""
 
-#: catalog/constants.py:48
+#: catalog/constants.py:50
 #: catalog/templates/catalog/author_confirm_delete.html:22
 msgid ""
 "This action cannot be undone. Deleting this author may affect books that are "
 "associated with them."
 msgstr ""
 
-#: catalog/constants.py:49
+#: catalog/constants.py:53
 #: catalog/templates/catalog/author_confirm_delete.html:27
 msgid "Yes, Delete Author"
 msgstr ""
 
-#: catalog/constants.py:50
+#: catalog/constants.py:54
 #: catalog/templates/catalog/author_confirm_delete.html:28
 msgid "Cancel"
 msgstr ""
 
-#: catalog/constants.py:51 catalog/templates/catalog/author_detail.html:12
+#: catalog/constants.py:55 catalog/templates/catalog/author_detail.html:12
 msgid "Author Details"
 msgstr ""
 
-#: catalog/constants.py:52 catalog/templates/catalog/author_detail.html:32
+#: catalog/constants.py:56 catalog/templates/catalog/author_detail.html:32
 msgid "Books by this Author"
 msgstr ""
 
-#: catalog/constants.py:53 catalog/templates/catalog/author_detail.html:47
+#: catalog/constants.py:57 catalog/templates/catalog/author_detail.html:47
 msgid "No books found for this author."
 msgstr ""
 
-#: catalog/constants.py:54 catalog/templates/catalog/author_detail.html:23
+#: catalog/constants.py:58 catalog/templates/catalog/author_detail.html:23
 msgid "Edit Author"
 msgstr ""
 
-#: catalog/constants.py:56
+#: catalog/constants.py:60
 #: catalog/templates/catalog/author_confirm_delete.html:12
 #: catalog/templates/catalog/author_detail.html:13
 msgid "Name:"
 msgstr ""
 
-#: catalog/constants.py:57
+#: catalog/constants.py:61
 #: catalog/templates/catalog/author_confirm_delete.html:14
 #: catalog/templates/catalog/author_detail.html:15
 msgid "Date of Birth:"
 msgstr ""
 
-#: catalog/constants.py:58
+#: catalog/constants.py:62
 #: catalog/templates/catalog/author_confirm_delete.html:17
 #: catalog/templates/catalog/author_detail.html:18
 msgid "Date of Death:"
 msgstr ""
 
-#: catalog/constants.py:59 catalog/templates/catalog/author_detail.html:40
+#: catalog/constants.py:63 catalog/templates/catalog/author_detail.html:40
 msgid "Genres:"
 msgstr ""
 
-#: catalog/constants.py:60
+#: catalog/constants.py:64
 #: catalog/templates/catalog/author_confirm_delete.html:22
 msgid "Warning:"
 msgstr ""
 
-#: catalog/constants.py:64
+#: catalog/constants.py:68
 msgid "Maintenance"
 msgstr ""
 
-#: catalog/constants.py:65
+#: catalog/constants.py:69
 msgid "On loan"
 msgstr ""
 
-#: catalog/constants.py:66
+#: catalog/constants.py:70
 msgid "Available"
 msgstr ""
 
-#: catalog/constants.py:67
+#: catalog/constants.py:71
 msgid "Reserved"
-msgstr ""
-
-#: catalog/forms.py:65
-msgid "Name"
-msgstr ""
-
-#: catalog/forms.py:66
-msgid "Date of Birth"
-msgstr ""
-
-#: catalog/forms.py:67
-msgid "Date of Death"
-msgstr ""
-
-#: catalog/forms.py:79
-msgid "Date of death cannot be before date of birth."
 msgstr ""
 
 #: catalog/templates/base_generic.html:6
@@ -192,6 +176,39 @@ msgstr ""
 
 #: catalog/templates/base_generic.html:37 templates/registration/login.html:32
 msgid "Login"
+msgstr ""
+
+#: catalog/templates/catalog/author_list.html:5
+msgid "Author List"
+msgstr ""
+
+#: catalog/templates/catalog/author_list.html:20
+msgid "There are no authors in the library."
+msgstr ""
+
+#: catalog/templates/catalog/author_list.html:27
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:30
+msgid "first"
+msgstr ""
+
+#: catalog/templates/catalog/author_list.html:28
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:31
+msgid "previous"
+msgstr ""
+
+#: catalog/templates/catalog/author_list.html:32
+#, python-format
+msgid "Page %(page_num)s of %(total_pages)s"
+msgstr ""
+
+#: catalog/templates/catalog/author_list.html:36
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:39
+msgid "next"
+msgstr ""
+
+#: catalog/templates/catalog/author_list.html:37
+#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:40
+msgid "last"
 msgstr ""
 
 #: catalog/templates/catalog/book_detail.html:7
@@ -272,28 +289,12 @@ msgstr ""
 msgid "There are no books borrowed."
 msgstr ""
 
-#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:30
-msgid "first"
-msgstr ""
-
-#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:31
-msgid "previous"
-msgstr ""
-
 #: catalog/templates/catalog/bookinstance_list_borrowed_user.html:35
 msgid "Page"
 msgstr ""
 
 #: catalog/templates/catalog/bookinstance_list_borrowed_user.html:35
 msgid "of"
-msgstr ""
-
-#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:39
-msgid "next"
-msgstr ""
-
-#: catalog/templates/catalog/bookinstance_list_borrowed_user.html:40
-msgid "last"
 msgstr ""
 
 #: catalog/templates/index.html:5
