@@ -10,7 +10,6 @@ from catalog.constants import RENEWAL_DATE_HELP_TEXT
 from catalog.constants import RENEWAL_DATE_LABEL
 from catalog.constants import RENEWAL_DATE_PAST_ERROR
 from catalog.models import Author
-from catalog.models import BookInstance
 
 
 class RenewBookForm(forms.Form):
@@ -22,28 +21,6 @@ class RenewBookForm(forms.Form):
 
     def clean_renewal_date(self):
         data = self.cleaned_data['renewal_date']
-
-        # Check if a date is not in the past.
-        if data < datetime.date.today():
-            raise ValidationError(RENEWAL_DATE_PAST_ERROR)
-
-        # Check if a date is in the allowed range (+4 weeks from today).
-        if data > datetime.date.today() + datetime.timedelta(weeks=4):
-            raise ValidationError(RENEWAL_DATE_FUTURE_ERROR)
-
-        return data
-
-
-class RenewBookModelForm(forms.ModelForm):
-    class Meta:
-        model = BookInstance
-        fields = ['due_back']
-        labels = {'due_back': RENEWAL_DATE_LABEL}
-        help_texts = {'due_back': RENEWAL_DATE_HELP_TEXT}
-        widgets = {'due_back': forms.DateInput(attrs={'type': 'date'})}
-
-    def clean_due_back(self):
-        data = self.cleaned_data['due_back']
 
         # Check if a date is not in the past.
         if data < datetime.date.today():
