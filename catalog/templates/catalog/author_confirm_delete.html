@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Delete Author" %}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{% trans "Delete Author" %}</h1>
+
+        <div class="alert alert-warning">
+            <h4>{% trans "Are you sure you want to delete this author?" %}</h4>
+            <p><strong>{% trans "Name:" %}</strong> {{ author.name }}</p>
+            {% if author.date_of_birth %}
+                <p><strong>{% trans "Date of Birth:" %}</strong> {{ author.date_of_birth }}</p>
+            {% endif %}
+            {% if author.date_of_death %}
+                <p><strong>{% trans "Date of Death:" %}</strong> {{ author.date_of_death }}</p>
+            {% endif %}
+        </div>
+
+        <p class="text-danger">
+            <strong>{% trans "Warning:" %}</strong> {% trans "This action cannot be undone. Deleting this author may affect books that are associated with them." %}
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">{% trans "Yes, Delete Author" %}</button>
+            <a href="{% url 'index' %}" class="btn btn-secondary">{% trans "Cancel" %}</a>
+        </form>
+    </div>
+{% endblock %}

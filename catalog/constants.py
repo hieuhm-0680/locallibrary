@@ -34,6 +34,35 @@ BOOK_INSTANCE_STATUS_HELP_TEXT = _('Book availability')
 BOOKS_PER_PAGE = 10
 BORROWED_BOOKS_PER_PAGE = 10
 
+# Form constants
+RENEWAL_DATE_LABEL = _('Renewal date')
+RENEWAL_DATE_HELP_TEXT = _(
+    'Enter a date between now and 4 weeks (default 3 weeks).',
+)
+RENEWAL_DATE_PAST_ERROR = _('Invalid date - renewal in past')
+RENEWAL_DATE_FUTURE_ERROR = _('Invalid date - renewal more than 4 weeks ahead')
+
+# Author constants for templates
+AUTHOR_FORM_SUBMIT = _('Submit')
+AUTHOR_DELETE_TITLE = _('Delete Author')
+AUTHOR_DELETE_CONFIRM = _('Are you sure you want to delete this author?')
+AUTHOR_DELETE_WARNING = _(
+    'This action cannot be undone. '
+    'Deleting this author may affect books that are associated with them.',
+)
+AUTHOR_DELETE_BUTTON = _('Yes, Delete Author')
+AUTHOR_CANCEL_BUTTON = _('Cancel')
+AUTHOR_DETAILS_TITLE = _('Author Details')
+AUTHOR_BOOKS_TITLE = _('Books by this Author')
+AUTHOR_NO_BOOKS = _('No books found for this author.')
+AUTHOR_EDIT_BUTTON = _('Edit Author')
+AUTHOR_DELETE_BUTTON_DETAIL = _('Delete Author')
+AUTHOR_NAME_LABEL = _('Name:')
+AUTHOR_DATE_OF_BIRTH_LABEL = _('Date of Birth:')
+AUTHOR_DATE_OF_DEATH_LABEL = _('Date of Death:')
+AUTHOR_GENRES_LABEL = _('Genres:')
+AUTHOR_WARNING_LABEL = _('Warning:')
+
 
 class LoanStatusEnum(Enum):
     MAINTENANCE = ('m', _('Maintenance'))

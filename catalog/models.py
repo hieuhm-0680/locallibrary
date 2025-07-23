@@ -115,4 +115,8 @@ class BookInstance(models.Model):
 
     @property
     def is_overdue(self):
-        return self.due_back and self.status == LoanStatusEnum.ON_LOAN.value
+        return (
+            self.due_back and
+            date.today() > self.due_back and
+            self.status == LoanStatusEnum.ON_LOAN.code
+        )

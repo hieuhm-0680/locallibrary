@@ -1,13 +1,23 @@
 from __future__ import annotations
 
+import datetime
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
+from django.urls import reverse
+from django.urls import reverse_lazy
 from django.views import generic
 
 from catalog.constants import BOOKS_PER_PAGE
 from catalog.constants import BORROWED_BOOKS_PER_PAGE
 from catalog.constants import LoanStatusEnum
+from catalog.forms import AuthorModelForm
+from catalog.forms import RenewBookForm
 from catalog.models import Author
 from catalog.models import Book
 from catalog.models import BookInstance
@@ -88,3 +98,49 @@ class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
             borrower=self.request.user,
             status__exact=LoanStatusEnum.ON_LOAN.code,
         ).order_by('due_back')
+
+
+@login_required
+@permission_required('catalog.can_mark_returned', raise_exception=True)
+def renew_book_librarian(request, pk):
+    book_instance = get_object_or_404(BookInstance, pk=pk)
+
+    if request.method == 'POST':
+        form = RenewBookForm(request.POST)
+        if form.is_valid():
+            book_instance.due_back = form.cleaned_data['renewal_date']
+            book_instance.save()
+            return HttpResponseRedirect(reverse('my-borrowed'))
+    else:
+        proposed_renewal_date = datetime.date.today() + \
+            datetime.timedelta(weeks=3)
+        form = RenewBookForm(initial={'renewal_date': proposed_renewal_date})
+
+    context = {
+        'form': form,
+        'book_instance': book_instance,
+    }
+
+    return render(request, 'catalog/book_renew_librarian.html', context)
+
+
+class AuthorCreate(PermissionRequiredMixin, generic.CreateView):
+    model = Author
+    form_class = AuthorModelForm
+    template_name = 'catalog/author_form.html'
+    permission_required = 'catalog.add_author'
+
+
+class AuthorUpdate(PermissionRequiredMixin, generic.UpdateView):
+    model = Author
+    form_class = AuthorModelForm
+    template_name = 'catalog/author_form.html'
+    success_url = reverse_lazy('index')
+    permission_required = 'catalog.change_author'
+
+
+class AuthorDelete(PermissionRequiredMixin, generic.DeleteView):
+    model = Author
+    template_name = 'catalog/author_confirm_delete.html'
+    success_url = reverse_lazy('index')
+    permission_required = 'catalog.delete_author'

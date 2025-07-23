@@ -2,13 +2,11 @@ from __future__ import annotations
 
 from django.contrib import admin
 
-from .models import (
-    Author,
-    Book,
-    BookInstance,
-    Genre,
-    Language
-)
+from .models import Author
+from .models import Book
+from .models import BookInstance
+from .models import Genre
+from .models import Language
 
 
 @admin.register(Genre)
@@ -90,9 +88,9 @@ class BookAdmin(admin.ModelAdmin):
 
 @admin.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
-    list_display = ('book', 'status', 'due_back', 'uniqueId')
-    list_filter = ('status', 'due_back', 'book__language')
-    search_fields = ('uniqueId', 'book__title')
+    list_display = ('book', 'status', 'borrower', 'due_back', 'uniqueId')
+    list_filter = ('status', 'due_back', 'book__language', 'borrower')
+    search_fields = ('uniqueId', 'book__title', 'borrower__username')
     date_hierarchy = 'due_back'
 
     fieldsets = (
@@ -103,7 +101,7 @@ class BookInstanceAdmin(admin.ModelAdmin):
         ),
         (
             'Availability', {
-                'fields': ('status', 'due_back'),
+                'fields': ('status', 'due_back', 'borrower'),
             },
         ),
     )
