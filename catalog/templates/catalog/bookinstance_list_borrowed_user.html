@@ -12,6 +12,9 @@
         {% if bookinst.is_overdue %}
           <strong>- {% trans "OVERDUE" %}</strong>
         {% endif %}
+        {% if perms.catalog.can_mark_returned %}
+          - <a href="{% url 'renew-book-librarian' bookinst.pk %}">{% trans "Renew" %}</a>
+        {% endif %}
       </li>
     {% endfor %}
   </ul>
