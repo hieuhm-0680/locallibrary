@@ -13,6 +13,7 @@ from django.urls import reverse
 from django.urls import reverse_lazy
 from django.views import generic
 
+from catalog.constants import AUTHORS_PER_PAGE
 from catalog.constants import BOOKS_PER_PAGE
 from catalog.constants import BORROWED_BOOKS_PER_PAGE
 from catalog.constants import LoanStatusEnum
@@ -98,6 +99,27 @@ class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
             borrower=self.request.user,
             status__exact=LoanStatusEnum.ON_LOAN.code,
         ).order_by('due_back')
+
+
+class AuthorListView(generic.ListView):
+    model = Author
+    context_object_name = 'author_list'
+    template_name = 'catalog/author_list.html'
+    paginate_by = AUTHORS_PER_PAGE
+
+    def get_queryset(self):
+        return Author.objects.all().order_by('name')
+
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
+    context_object_name = 'author'
+    template_name = 'catalog/author_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['author_books'] = Book.objects.filter(author=self.object)
+        return context
 
 
 @login_required
