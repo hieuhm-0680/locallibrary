@@ -433,6 +433,3 @@ msgstr "Đặt lại mật khẩu"
 
 #~ msgid "Date of Death"
 #~ msgstr "Ngày mất"
-
-#~ msgid "Date of death cannot be before date of birth."
-#~ msgstr "Ngày mất không thể trước ngày sinh."

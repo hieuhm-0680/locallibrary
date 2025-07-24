@@ -14,6 +14,7 @@ LANGUAGE_NAME_HELP_TEXT = _("Enter the book's language (e.g. English, French)")
 
 # Author constants
 AUTHOR_NAME_MAX_LENGTH = 100
+AUTHORS_PER_PAGE = 10
 
 # Book constants
 BOOK_TITLE_MAX_LENGTH = 200
